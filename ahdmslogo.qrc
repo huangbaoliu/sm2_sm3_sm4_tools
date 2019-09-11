@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/">
+    <file>ahdms.png</file>
+  </qresource>
+</RCC>
