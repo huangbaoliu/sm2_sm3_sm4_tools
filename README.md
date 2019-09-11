@@ -17,7 +17,7 @@
  * 4、gmssl为不带界面sm2/3/4基础算法库
  
 python工具打包步骤：
- * 1、安装python，可安装python3.7
+ * 1、安装python，可安装python3.7.4
  * 2、用pip3安装pyqt5_sip、pyqt5 (pip3依赖openssl进行ssl通信)
  * 3、用pip3安装pyinstaller
  * 4、运行pack.py脚本或使用pyinstaller命令行打包
