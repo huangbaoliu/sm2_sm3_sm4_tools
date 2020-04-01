@@ -6,7 +6,9 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-import sys
+import sys, os
+if hasattr(sys, 'frozen'):
+    os.environ['PATH'] = sys._MEIPASS + ";" + os.environ['PATH']
 from PyQt5.uic import loadUi
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox
@@ -297,10 +299,23 @@ class cipherToolsUI(QWidget):
     def sm2_key_pair_func(self):
         sm2_crypt = sm2.CryptSM2(private_key="", public_key="")
         #产生私钥
-        random_hex_str = func.random_hex(sm2_crypt.para_len)
-        self.privkey.setText(random_hex_str.upper())
-        self.result_textEdit.append("Gen Keypair - private key: " + random_hex_str.upper())
-        k = int(random_hex_str, 16)
+        pvk_str = self.privkey.text().strip()
+        if pvk_str != "":
+            if True != self.is_hex_string(pvk_str):
+                self.privkey.setText(pvk_str[0:len(pvk_str) - 1].upper())
+                self.Qmsgbox_show("Error", "Please input hex number")
+                return
+            if len(pvk_str) != 64:
+                info = "Length of the private key hex number string is : %d,  error !" % (len(pvk_str))
+                self.Qmsgbox_show("Error", info)
+                return
+            self.privkey.setText(pvk_str.upper())
+            prvk_hex = pvk_str
+        else:
+            prvk_hex = func.random_hex(sm2_crypt.para_len)
+            self.privkey.setText(prvk_hex.upper())
+        self.result_textEdit.append("Gen Keypair - private key: " + prvk_hex.upper())
+        k = int(prvk_hex, 16)
         #计算公钥
         Pubk = sm2_crypt._kg(k, sm2_crypt.ecc_table['g'])
         self.pubkx_LE.setText(Pubk[0:64].upper())
