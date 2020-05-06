@@ -158,7 +158,7 @@ class cipherToolsUI(QWidget):
         if len(sm2_msg) % 2 != 0:
             sm2_msg = sm2_msg[0:len(sm2_msg) - 1]
 
-        if len(self.id_iv.text().strip()) == "":
+        if self.id_iv.text().strip() == "":
             ida = "31323334353637383132333435363738"
         else:
             ida = self.id_iv.text().strip()
