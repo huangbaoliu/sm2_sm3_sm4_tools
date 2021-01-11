@@ -78,8 +78,6 @@ class cipherToolsUI(Ui_sm_cipher_tools, QWidget):
         else:
             self.pad = False
 
-        print("mode %s pad %s" % (self.mode, self.pad))
-
     def is_hex_char(self, c):
         vl = ord(c)
         if ((vl > 0x2f) & (vl < 0x3a)):
@@ -173,7 +171,7 @@ class cipherToolsUI(Ui_sm_cipher_tools, QWidget):
         if len(sm2_msg) % 2 != 0:
             sm2_msg = sm2_msg[0:len(sm2_msg) - 1]
 
-        if len(self.id_iv.text().strip()) == "":
+        if self.id_iv.text().strip() == "":
             ida = "31323334353637383132333435363738"
         else:
             ida = self.id_iv.text().strip()
