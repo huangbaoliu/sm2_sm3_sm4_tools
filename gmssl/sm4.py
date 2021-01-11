@@ -203,3 +203,59 @@ class CryptSM4(object):
                 i += 16
                 length -= 16
             return list_to_bytes(unpadding(output_data))
+
+    def crypt_ofb_nopad(self, iv, input_data):
+        i = 0
+        output_data = []
+        iv = bytes_to_list(iv)
+        input_data = bytes_to_list(input_data)
+        length = len(input_data)
+        ps_len = 16
+        while length > 0:
+            iv = self.one_round(self.sk, iv[0:16])
+            if length > 16:
+                ps_len = 16
+            else:
+                ps_len = length
+            output_data += xor(input_data[i:i + ps_len], iv[0:ps_len])
+            i += ps_len
+            length -= ps_len
+        return list_to_bytes(output_data)
+
+    def crypt_cfb_encrypt(self, iv, input_data):
+        i = 0
+        output_data = []
+        iv = bytes_to_list(iv)
+        input_data = bytes_to_list(input_data)
+        length = len(input_data)
+        ps_len = 16
+        while length > 0:
+            tmp_out = self.one_round(self.sk, iv[0:16])
+            if length > 16:
+                ps_len = 16
+            else:
+                ps_len = length
+            output_data[i:i+ps_len] += xor(input_data[i:i + ps_len], tmp_out[0:ps_len])
+            iv = copy.deepcopy(output_data[i:i + ps_len])
+            i += ps_len
+            length -= ps_len
+        return list_to_bytes(output_data)
+
+    def crypt_cfb_decrypt(self, iv, input_data):
+        i = 0
+        output_data = []
+        iv = bytes_to_list(iv)
+        input_data = bytes_to_list(input_data)
+        length = len(input_data)
+        ps_len = 16
+        while length > 0:
+            tmp_out = self.one_round(self.sk, iv[0:16])
+            if length > 16:
+                ps_len = 16
+            else:
+                ps_len = length
+            output_data[i:i+ps_len] += xor(input_data[i:i + ps_len], tmp_out[0:ps_len])
+            iv = copy.deepcopy(input_data[i:i + ps_len])
+            i += ps_len
+            length -= ps_len
+        return list_to_bytes(output_data)

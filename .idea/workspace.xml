@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d050887-1344-4c58-b283-5dd0e62e8da9" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,10 +29,14 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1QMKRCeO9w4LoB0lhqmcpQICsyq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -43,18 +46,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\vwShare\pyQT\sm-tools" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.setup">
     <configuration name="pack" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -193,35 +184,54 @@
       <workItem from="1567762771132" duration="163000" />
       <workItem from="1567990262383" duration="16195000" />
       <workItem from="1568076376795" duration="11157000" />
+      <workItem from="1610331660025" duration="4300000" />
+      <workItem from="1610338678632" duration="1000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1876" height="396" key="GridCell.Tab.0.bottom" timestamp="1610337402708">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="396" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1610337402708" />
+    <state width="1876" height="396" key="GridCell.Tab.0.center" timestamp="1610337402708">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="396" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1610337402708" />
+    <state width="1876" height="396" key="GridCell.Tab.0.left" timestamp="1610337402708">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="396" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1610337402708" />
+    <state width="1876" height="396" key="GridCell.Tab.0.right" timestamp="1610337402708">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1876" height="396" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1610337402708" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/sm_tools$sm4.coverage" NAME="sm4 Coverage Results" MODIFIED="1567735856061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gmssl" />
     <SUITE FILE_PATH="coverage/sm_tools$test_sm4.coverage" NAME="test_sm4 Coverage Results" MODIFIED="1567737101574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/sm_tools$test_sm2.coverage" NAME="test_sm2 Coverage Results" MODIFIED="1567664895752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/sm_tools$setup.coverage" NAME="setup Coverage Results" MODIFIED="1610338394565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/sm_tools$sm_tools_dist.coverage" NAME="sm_tools_dist Coverage Results" MODIFIED="1568083098533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/sm_tools$sm_tools.coverage" NAME="sm_tools Coverage Results" MODIFIED="1568086526522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/sm_tools$sm_cipher_tools.coverage" NAME="sm_cipher_tools Coverage Results" MODIFIED="1567584567558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/sm_tools$setup.coverage" NAME="setup Coverage Results" MODIFIED="1568086565829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/sm_tools$pack.coverage" NAME="pack Coverage Results" MODIFIED="1568086317881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/sm_tools$test_sm3.coverage" NAME="test_sm3 Coverage Results" MODIFIED="1567591839132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/sm_tools$sm_tools.coverage" NAME="sm_tools Coverage Results" MODIFIED="1610337159739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/sm_tools$sm4.coverage" NAME="sm4 Coverage Results" MODIFIED="1567735856061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/gmssl" />
+    <SUITE FILE_PATH="coverage/sm_tools$sm_cipher_tools.coverage" NAME="sm_cipher_tools Coverage Results" MODIFIED="1567584567558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/sm_tools$sm_tools_pack_test.coverage" NAME="sm_tools_pack_test Coverage Results" MODIFIED="1568082662068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/sm_tools$pack.coverage" NAME="pack Coverage Results" MODIFIED="1610337057076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -15,14 +15,17 @@ from gmssl import sm3, func
 import base64
 import binascii
 from gmssl import sm2, func
+from sm_cipher_tools import Ui_sm_cipher_tools # 增加文本显示器
 
 crypt_sm4 = CryptSM4()
 
-class cipherToolsUI(QWidget):
+class cipherToolsUI(Ui_sm_cipher_tools, QWidget):
 
     def __init__(self):
-        super(cipherToolsUI, self).__init__()
-        loadUi('sm_cipher_tools.ui', self)
+        #super(cipherToolsUI, self).__init__()
+        #loadUi('sm_cipher_tools.ui', self)
+        super().__init__()
+        self.setupUi(self)
 
         self.clear_input_Button.clicked.connect(self.clear_input)
         self.sm4_encrypt_Button.clicked.connect(self.sm4_encrypt)
@@ -47,7 +50,8 @@ class cipherToolsUI(QWidget):
         #sm4 padding
         self.pad = False
         self.pad_checkBox.setChecked(False)
-        self.pad_checkBox.stateChanged.connect(self.sm4_pad)
+        self.pad_checkBox.clicked.connect(self.sm4_pad)
+        #self.pad_checkBox.stateChanged.connect(self.sm4_pad)
 
         #sm4 mode
         self.mode = self.mode_comboBox.currentText()
@@ -58,12 +62,23 @@ class cipherToolsUI(QWidget):
 
     def mode_changed(self):
         self.mode = self.mode_comboBox.currentText()
+        if self.mode == "CFB":
+            self.pad_checkBox.setChecked(False)
+        if self.mode == "OFB":
+            self.pad_checkBox.setChecked(False)
 
     def sm4_pad(self):
+        if self.mode == "CFB":
+            self.pad_checkBox.setChecked(False)
+        if self.mode == "OFB":
+            self.pad_checkBox.setChecked(False)
+
         if self.pad_checkBox.isChecked():
             self.pad = True
         else:
             self.pad = False
+
+        print("mode %s pad %s" % (self.mode, self.pad))
 
     def is_hex_char(self, c):
         vl = ord(c)
@@ -158,7 +173,7 @@ class cipherToolsUI(QWidget):
         if len(sm2_msg) % 2 != 0:
             sm2_msg = sm2_msg[0:len(sm2_msg) - 1]
 
-        if self.id_iv.text().strip() == "":
+        if len(self.id_iv.text().strip()) == "":
             ida = "31323334353637383132333435363738"
         else:
             ida = self.id_iv.text().strip()
@@ -210,13 +225,20 @@ class cipherToolsUI(QWidget):
                 self.Qmsgbox_show("Error", "Please choose mode!");
                 return
         else:
-            if len(sm4_plaintext) % 16 != 0:
-                self.Qmsgbox_show("Error", "Plaintext len is not 16's bytes")
-                return
             if self.mode == "ECB":
+                if len(sm4_plaintext) % 16 != 0:
+                    self.Qmsgbox_show("Error", "Plaintext len is not 16's bytes")
+                    return
                 encrypt_value = crypt_sm4.crypt_ecb_nopad(sm4_plaintext)
             elif self.mode == "CBC":
+                if len(sm4_plaintext) % 16 != 0:
+                    self.Qmsgbox_show("Error", "Plaintext len is not 16's bytes")
+                    return
                 encrypt_value = crypt_sm4.crypt_cbc_nopad(iv, sm4_plaintext)
+            elif self.mode == "OFB":
+                encrypt_value = crypt_sm4.crypt_ofb_nopad(iv, sm4_plaintext)
+            elif self.mode == "CFB":
+                encrypt_value = crypt_sm4.crypt_cfb_encrypt(iv, sm4_plaintext)
             else:
                 self.Qmsgbox_show("Error", "Please choose mode!");
                 return
@@ -237,7 +259,6 @@ class cipherToolsUI(QWidget):
                 return
             iv = bytes().fromhex(self.id_iv.text().strip())
 
-        crypt_sm4.set_key(sm4_key, SM4_DECRYPT)
 
         #对密文长度做16整数倍判断
         encrypt_str = self.encrypt_result.text().strip()
@@ -248,8 +269,8 @@ class cipherToolsUI(QWidget):
             self.Qmsgbox_show("Error", "Encrypt result is not hex string");
             return
 
-        if len(encrypt_str) % 32 != 0:
-            self.Qmsgbox_show("Error", "Encrypt result is not 16's bytes");
+        if len(encrypt_str) % 2 != 0:
+            self.Qmsgbox_show("Error", "Encrypt result is not valid HEX value");
             return
         encrypt_value = bytes().fromhex(encrypt_str)
         self.result_textEdit.append("SM4 Ciphertext: " + encrypt_value.hex().upper())
@@ -257,17 +278,33 @@ class cipherToolsUI(QWidget):
         #判断是否有填充
         if self.pad == True:
             if self.mode == "ECB":
+                crypt_sm4.set_key(sm4_key, SM4_DECRYPT)
                 decrypt_value = crypt_sm4.crypt_ecb(encrypt_value)
             elif self.mode == "CBC":
+                crypt_sm4.set_key(sm4_key, SM4_DECRYPT)
                 decrypt_value = crypt_sm4.crypt_cbc(iv, encrypt_value)
             else:
                 self.Qmsgbox_show("Error", "Please choose mode!");
                 return
         else:
             if self.mode == "ECB":
+                if len(encrypt_str) % 32 != 0:
+                    self.Qmsgbox_show("Error", "Encrypt result is not 16's bytes");
+                    return
+                crypt_sm4.set_key(sm4_key, SM4_DECRYPT)
                 decrypt_value = crypt_sm4.crypt_ecb_nopad(encrypt_value)
             elif self.mode == "CBC":
+                if len(encrypt_str) % 32 != 0:
+                    self.Qmsgbox_show("Error", "Encrypt result is not 16's bytes");
+                    return
+                crypt_sm4.set_key(sm4_key, SM4_DECRYPT)
                 decrypt_value = crypt_sm4.crypt_cbc_nopad(iv, encrypt_value)
+            elif self.mode == "OFB":
+                crypt_sm4.set_key(sm4_key, SM4_ENCRYPT)
+                decrypt_value = crypt_sm4.crypt_ofb_nopad(iv, encrypt_value)
+            elif self.mode == "CFB":
+                crypt_sm4.set_key(sm4_key, SM4_ENCRYPT)
+                decrypt_value = crypt_sm4.crypt_cfb_decrypt(iv, encrypt_value)
             else:
                 self.Qmsgbox_show("Error", "Please choose mode!");
                 return

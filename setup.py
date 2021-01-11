@@ -30,18 +30,15 @@ test_requirements = [
 
 
 setup(
-
-    name='gmssl',
+    name='sm_tools',
     description='Pure-Python SM2/SM3/SM4 implementation',
-    version='3.2.1',
-    author='duanhongyi',
-    author_email='duanhyi@gmail.com',
+    version='1.0.0',
+    author='huangbaoliu',
+    author_email='liuhuangbao@126.com',
     packages=find_packages(),
     include_package_data=True,
     long_description=README,
-    url='https://github.com/duanhongyi/gmssl',
-    install_requires=requires,
-    tests_require=test_requirements,
+    url='https://github.com/huangbaoliu/sm2_sm3_sm4_tools',
     platforms='all platform',
     license='BSD',
 )
